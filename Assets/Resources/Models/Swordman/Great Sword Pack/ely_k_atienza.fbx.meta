@@ -3,7 +3,12 @@ guid: 2a1520a747387bb43a63c6d297d53239
 ModelImporter:
   serializedVersion: 25
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ely_vanguardsoldier_kerwinatienza_M
+    second: {fileID: 2100000, guid: 69bfdfba85737524c8c9546f52df27a4, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
