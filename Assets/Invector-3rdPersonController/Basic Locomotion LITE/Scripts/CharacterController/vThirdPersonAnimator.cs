@@ -22,6 +22,16 @@ namespace Invector.CharacterController
                 animator.SetFloat("InputHorizontal", direction, 0.1f, Time.deltaTime);
             }
 
+            if (Input.GetMouseButtonDown(0))
+            {
+                animator.SetBool("Attack", false);
+
+            }
+            else if (Input.GetMouseButtonUp(0))
+            {
+                animator.SetBool("Attack", true);
+            }
+
             // fre movement get the input 0 to 1
             animator.SetFloat("InputVertical", speed, 0.1f, Time.deltaTime);
         }
