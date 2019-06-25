@@ -7,7 +7,7 @@ public class EnemySpawner : MonoBehaviour
     // Start is called before the first frame update
     [Header("Enemigo a spawnear")] public GameObject enemy;
     private Vector3 whereToSpawn;
-    private float spawnRate = 3f;
+    private float spawnRate = 10f;
     private float nextSpawn = 0.0f;
     private float randX;
     private float randZ;

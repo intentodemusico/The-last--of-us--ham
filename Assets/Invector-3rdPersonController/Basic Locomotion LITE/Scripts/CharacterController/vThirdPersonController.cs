@@ -5,11 +5,27 @@ namespace Invector.CharacterController
 {
     public class vThirdPersonController : vThirdPersonAnimator
     {
+       public  static float salud = 100f;
         protected virtual void Start()
         {
 #if !UNITY_EDITOR
                 Cursor.visible = false;
 #endif
+        }
+
+        private void OnCollisionEnter(Collision collision)
+        {
+            if (collision.gameObject.CompareTag("Enemy"))
+            {
+                EnemyFollow.salud -= 50f;
+            }
+        }
+        private void Update()
+        {
+            if (salud == 0)
+            {
+                DestroyObject(obj: gameObject);
+            }
         }
 
         public virtual void Sprint(bool value)
