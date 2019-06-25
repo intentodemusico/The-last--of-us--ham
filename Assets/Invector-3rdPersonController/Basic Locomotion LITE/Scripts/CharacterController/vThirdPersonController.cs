@@ -26,7 +26,7 @@ namespace Invector.CharacterController
         }
         private IEnumerator waiting()
         {
-            sonido = (AudioClip)Resources.Load("Audio/morir", typeof(AudioClip));
+            sonido = (AudioClip)Resources.Load("Audio/PlayerDied", typeof(AudioClip));
             sound.PlayOneShot(sonido, 2f);
             yield return new WaitWhile(() => sound.isPlaying);
             Scene escena = SceneManager.GetActiveScene();
@@ -40,7 +40,7 @@ namespace Invector.CharacterController
             {
                 DestroyObject(gameObject);
             
-                //StartCoroutine(waiting());
+                StartCoroutine(waiting());
             }
         }
 
