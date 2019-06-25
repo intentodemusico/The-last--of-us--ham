@@ -1,13 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 namespace Invector.CharacterController
 {
     public class vThirdPersonController : vThirdPersonAnimator
     {
-       public  static float salud = 100f;
+        private AudioSource sound;
+        public AudioClip sonido;
+        public  static float salud = 100f;
         protected virtual void Start()
         {
+            sound = GetComponent<AudioSource>();
 #if !UNITY_EDITOR
                 Cursor.visible = false;
 #endif
@@ -20,11 +24,23 @@ namespace Invector.CharacterController
                 EnemyFollow.salud -= 50f;
             }
         }
+        private IEnumerator waiting()
+        {
+            sonido = (AudioClip)Resources.Load("Audio/morir", typeof(AudioClip));
+            sound.PlayOneShot(sonido, 2f);
+            yield return new WaitWhile(() => sound.isPlaying);
+            Scene escena = SceneManager.GetActiveScene();
+            SceneManager.LoadScene(escena.name);
+
+            // Destroy(gameObject);
+        }
         private void Update()
         {
             if (salud == 0)
             {
-                DestroyObject(obj: gameObject);
+                DestroyObject(gameObject);
+            
+                //StartCoroutine(waiting());
             }
         }
 

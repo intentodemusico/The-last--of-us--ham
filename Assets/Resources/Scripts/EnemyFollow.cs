@@ -47,7 +47,7 @@ public class EnemyFollow : MonoBehaviour
         sound.PlayOneShot(sonido);
         if (salud == 0)
         {
-            DestroyObject(gameObject);
+            DestroyObject(this);
         }
     }
 }
