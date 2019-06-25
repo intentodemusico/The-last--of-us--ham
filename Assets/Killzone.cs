@@ -16,6 +16,7 @@ public class Killzone : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            Debug.Log("Cayó al mar");
             StartCoroutine(waiting());
         }
     }

@@ -38,8 +38,8 @@ namespace Invector.CharacterController
         {
             if (salud == 0)
             {
-                DestroyObject(gameObject);
-            
+                // DestroyObject(gameObject);
+                Debug.Log("Destruir ");
                 StartCoroutine(waiting());
             }
         }
