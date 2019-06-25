@@ -8,6 +8,8 @@ public class EnemyFollow : MonoBehaviour
 {
     public static float salud = 100f;
     public GameObject player;
+    private AudioSource sound;
+    public AudioClip sonido;
     NavMeshAgent enemy;
     Animator enemy2;
     vThirdPersonController hola = new vThirdPersonController();
@@ -16,6 +18,7 @@ public class EnemyFollow : MonoBehaviour
     {
         enemy=GetComponent<NavMeshAgent>();
         enemy2 = GetComponent<Animator>();
+        sound = GetComponent<AudioSource>();
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -23,8 +26,8 @@ public class EnemyFollow : MonoBehaviour
             {
             enemy2.SetBool("Attack", true);
             vThirdPersonController.salud -= 1;
-
-
+            sonido = (AudioClip)Resources.Load("Audio/ZombieAttack", typeof(AudioClip));
+            sound.PlayOneShot(sonido);
 
         }
     }
@@ -40,6 +43,8 @@ public class EnemyFollow : MonoBehaviour
     {
         enemy.destination = player.transform.position;
         enemy2.SetFloat("Speed", Mathf.Abs(player.transform.position.x));
+        sonido = (AudioClip)Resources.Load("Audio/ZombieWalking", typeof(AudioClip));
+        sound.PlayOneShot(sonido);
         if (salud == 0)
         {
             DestroyObject(gameObject);
