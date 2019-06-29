@@ -6,8 +6,10 @@ public class EnemySpawner : MonoBehaviour
 {
     // Start is called before the first frame update
     [Header("Enemigo a spawnear")] public GameObject enemy;
+    [Header("Enemigo a spawnear")] public GameObject enemy1;
+
     private Vector3 whereToSpawn;
-    private float spawnRate = 500f;
+    private float spawnRate = 5f;
     private float nextSpawn = 0.0f;
     private float randX;
     private float randZ;
@@ -26,6 +28,7 @@ public class EnemySpawner : MonoBehaviour
             randZ = Random.Range(130, -40);
             whereToSpawn = new Vector3(randX, 5,randZ);
             Instantiate(enemy, whereToSpawn, Quaternion.identity);
+            Instantiate(enemy1, whereToSpawn, Quaternion.identity);
         }
         
     }
